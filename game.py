@@ -7,7 +7,7 @@ from controller import Input, Controller
 from stopwatch import Stopwatch
 
 # Objective 4: Import Player from player module
-# YOUR CODE HERE...
+from player import Player
 
 # Objective 5: Import Map and Tile from tilemap module
 # YOUR CODE HERE...
@@ -88,8 +88,7 @@ def main() -> int:
     renderer.color = color
 
     # Objective 3: Set up the game
-    # YOUR CODE HERE...
-
+    game = Game(resources)
 
     # Game Loop, draws each frame
     last_time = time()
@@ -110,7 +109,7 @@ def main() -> int:
         renderer.clear()
 
         # Objective 3: Render the game
-        # YOUR CODE HERE...
+        game.render(renderer)
 
         renderer.present()
 
