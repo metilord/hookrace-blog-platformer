@@ -10,7 +10,7 @@ from stopwatch import Stopwatch
 from player import Player
 
 # Objective 5: Import Map and Tile from tilemap module
-# YOUR CODE HERE...
+from tilemap import Map
 
 
 UPDATES_PER_SECOND = 50
@@ -24,17 +24,17 @@ class Game:
         self.stopwatch = Stopwatch(resources)
 
         # Objective 4: Create a Player
-        # YOUR CODE HERE...
+        self.player = Player(resources)
 
         # Objective 5: Create a Map
-        # YOUR CODE HERE...
+
 
     def update(self, controller: Controller) -> None:
         if controller.has_input(Input.RESTART):
             self.stopwatch.reset()
 
             # Objective 4: Put the player back at the start
-            # YOUR CODE HERE...
+            self.player.restart()
 
         # Objective 6: Call the player update method
         # YOUR CODE HERE...
@@ -47,7 +47,7 @@ class Game:
 
     def render(self, renderer: Renderer) -> None:
         # Objective 4: Render the player
-        # YOUR CODE HERE...
+        self.player.render(renderer, self.camera)
 
         # Objective 5: Render the tilemap
         # YOUR CODE HERE...
@@ -84,7 +84,7 @@ def main() -> int:
     window.show()
 
     renderer = Renderer(window)
-    color = Color(100, 3, 5)
+    color = Color(125, 148, 210)
     renderer.color = color
 
     # Objective 3: Set up the game
