@@ -46,13 +46,9 @@ class Stopwatch:
 def format_time(ticks: int) -> str:
     mins = int(int(ticks / 50) / 60)
     secs = int(ticks / 50) % 60
-    return str(ticks)
-    #return f"{mins:02}:{secs:02}"
+    return "{:02}:{:02}".format(mins, secs)
 
 
 def format_time_exact(ticks: int) -> str:
     cents = (ticks % 50) * 2
-    return str(ticks)
-    #return f"{format_time(ticks)}:{cents:02}"
-
-
+    return "{}.{:02}".format(format_time(ticks), cents)
