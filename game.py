@@ -27,7 +27,7 @@ class Game:
         self.player = Player(resources)
 
         # Objective 5: Create a Map
-
+        self.map = Map(resources)
 
     def update(self, controller: Controller) -> None:
         if controller.has_input(Input.RESTART):
@@ -50,7 +50,7 @@ class Game:
         self.player.render(renderer, self.camera)
 
         # Objective 5: Render the tilemap
-        # YOUR CODE HERE...
+        self.map.render(renderer, self.camera)
 
         self.stopwatch.render(renderer)
 

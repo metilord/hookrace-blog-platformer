@@ -93,4 +93,4 @@ class Player:
 
         # Objective 4: Iterate over the body parts and render each one
         for source, destination, flipped in body_parts:
-            renderer.copy(texture, source, destination) #flip=flipped)
+            renderer.copy(texture, source, destination)
