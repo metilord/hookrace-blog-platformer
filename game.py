@@ -37,7 +37,7 @@ class Game:
             self.player.restart()
 
         # Objective 6: Call the player update method
-        # YOUR CODE HERE...
+        self.player.update(Controller, Map)
 
         # Objective 7: Call the move_camera function with a focus on the player position
         # YOUR CODE HERE...
