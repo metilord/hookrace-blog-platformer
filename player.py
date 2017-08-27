@@ -31,8 +31,8 @@ class Player:
         # new y velocity...
         if controller.has_input(Input.JUMP):
             if ground:
-                new_vel.y = -21
-        new_vel.y += 0.75  # gravity
+                new_vel.y = -15
+        new_vel.y += 0.5  # gravity
 
         # new x velocity...
         direction = float(controller.direction)
@@ -40,10 +40,13 @@ class Player:
             new_vel.x = 0.5 * new_vel.x + 4.0 * direction
         else:
             new_vel.x = 0.95 * new_vel.x + 2.0 * direction
-        new_vel.x = min(max(new_vel.x, -8), 8)
+        new_vel.x = min(max(new_vel.x, -2), 2)
 
         # Objective 6: Use the tilemap to shift the player position by velocity
         # YOUR CODE HERE...
+        self.pos, self.vel = tilemap.move_box(self.pos, new_vel, PLAYER_SIZE)
+        self.pos.x = int(self.pos.x)
+        self.pos.y = int(self.pos.y)
 
     def render(self, renderer: Renderer, camera: Vector2d) -> None:
         if self.texture is None:

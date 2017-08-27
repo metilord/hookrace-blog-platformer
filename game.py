@@ -37,10 +37,10 @@ class Game:
             self.player.restart()
 
         # Objective 6: Call the player update method
-        self.player.update(Controller, Map)
+        self.player.update(controller, self.map)
 
         # Objective 7: Call the move_camera function with a focus on the player position
-        # YOUR CODE HERE...
+        #move_camera(self.camera, self.player.pos)
 
         # Objective 8: Update the stopwatch according to the player tile
         # YOUR CODE HERE...
@@ -71,8 +71,8 @@ def move_camera(camera: Vector2d, focus: Point2d) -> None:
     # camera.x = min(max(camera.x, left_area), right_area)
 
     # 3. fluid
-    # dist = camera.x - focus.x + half_win_width
-    # camera.x -= 0.05 * dist
+    dist = camera.x - focus.x + half_win_width
+    camera.x -= 0.05 * dist
 
 
 def main() -> int:
@@ -104,12 +104,14 @@ def main() -> int:
 
         # Objective 3: Update the game the appropriate number of frames
         while lag >= SECONDS_PER_UPDATE:
+            game.update(controller)
             lag -= SECONDS_PER_UPDATE
 
         renderer.clear()
 
         # Objective 3: Render the game
         game.render(renderer)
+        game.update(controller)
 
         renderer.present()
 
